@@ -35,15 +35,14 @@ def writer(submission_data):
 
 def csv_writer(submitted_data):
     with open(f"{current_dir}/database.csv", newline='', mode="a") as database_csv:
-        email = submitted_data['email'] # gets value of dict key
-        subject = submitted_data['subject'] #gets value of dict key
-        message = submitted_data['message'] #gets value of dict key
+        email = submitted_data['email'] 
+        subject = submitted_data['subject'] 
+        message = submitted_data['message'] 
         '''csv_writer is an object that you can use.'''
         csv_writer = csv.writer(database_csv, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         csv_writer.writerow([email, subject, message])
 
 
-# This is for the "contact me" page
 @app.route("/submit_form", methods=["POST", "GET"])
 def contact_me():
     if request.method == "POST":
